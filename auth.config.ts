@@ -15,6 +15,11 @@ export const authConfig = {
                 return Response.redirect(new URL('/dashboard', nextUrl));
             }
             return true;
+        },redirect({ url, baseUrl }) {
+            if (url.startsWith('/dashboard')) {
+                return url;
+            }
+            return baseUrl + '/dashboard';
         },
     },
     providers: [], // Add providers with an empty array for now
