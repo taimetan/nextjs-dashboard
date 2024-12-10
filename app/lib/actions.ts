@@ -60,6 +60,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
         return {
             message: 'Database Error: Failed to Create Invoice.',
         };
+        throw error;
     }
 
     // Revalidate the cache for the invoices page and redirect the user.
@@ -96,6 +97,7 @@ export async function updateInvoice(
     `;
     } catch (error) {
         return { message: 'Database Error: Failed to Update Invoice.' };
+        throw error;
     }
 
     revalidatePath('/dashboard/invoices');
@@ -108,6 +110,7 @@ export async function deleteInvoice(id: string) {
         return { message: 'Deleted Invoice.' };
     } catch (error) {
         return { message: 'Database Error: Failed to Delete Invoice.' };
+        throw error;
     }
 }
 export async function authenticate(
